@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const BookList = ({ books, fetchBooks }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -21,7 +24,10 @@ export const BookList = ({ books, fetchBooks }) => {
             <img
               src={book.cover_image}
               alt={`${book.title} cover image`}
-              className="image border border-black shadow-lg shadow-gray-400 opacity-75 hover:opacity-100"
+              className="image border border-black shadow-lg shadow-gray-400 opacity-75 hover:opacity-100 cursor-pointer"
+              onClick={() => {
+                navigate(`/books/${book.id}`);
+              }}
             />
           </div>
         </div>

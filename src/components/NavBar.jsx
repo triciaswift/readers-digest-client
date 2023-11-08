@@ -8,7 +8,7 @@ export const NavBar = () => {
       <li className="navbar__item pl-10">
         <NavLink
           className="text-left underline text-blue-600 hover:text-purple-700"
-          to={"/allbooks"}
+          to={"/books/all"}
         >
           All Books
         </NavLink>
@@ -16,9 +16,9 @@ export const NavBar = () => {
       <li className="navbar__item pl-10">
         <NavLink
           className="text-left underline text-blue-600 hover:text-purple-700"
-          to={"/create"}
+          to={"/books/new"}
         >
-          Add a Book
+          Collect a Book
         </NavLink>
       </li>
       {localStorage.getItem("reader_token") !== null ? (
