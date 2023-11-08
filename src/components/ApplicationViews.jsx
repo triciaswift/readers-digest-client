@@ -6,6 +6,7 @@ import { Authorized } from "./Authorized";
 import { useState } from "react";
 import { BookForm } from "./BookForm";
 import { BookList } from "./BookList";
+import { BookDetails } from "./BookDetails";
 
 export const ApplicationViews = () => {
   const [booksState, setBooksState] = useState([]);
@@ -29,16 +30,19 @@ export const ApplicationViews = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<Authorized />}>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/allbooks"
-            element={
-              <BookList books={booksState} fetchBooks={fetchBooksFromAPI} />
-            }
-          />
-          <Route
-            path="/create"
-            element={<BookForm fetchBooks={fetchBooksFromAPI} />}
-          />
+          <Route path="books">
+            <Route
+              path="all"
+              element={
+                <BookList books={booksState} fetchBooks={fetchBooksFromAPI} />
+              }
+            />
+            <Route
+              path="new"
+              element={<BookForm fetchBooks={fetchBooksFromAPI} />}
+            />
+            <Route path=":bookId" element={<BookDetails />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
