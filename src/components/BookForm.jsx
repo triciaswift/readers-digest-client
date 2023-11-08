@@ -49,7 +49,7 @@ export const BookForm = ({ fetchBooks }) => {
 
     await fetchBooks();
 
-    navigate("/allbooks");
+    navigate("/books/all");
   };
 
   const handleUserInput = (e) => {

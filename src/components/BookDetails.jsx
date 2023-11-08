@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const BookDetails = () => {
   const [chosenBook, setBook] = useState({});
+  const navigate = useNavigate();
 
   const { bookId } = useParams();
 
@@ -45,7 +46,19 @@ export const BookDetails = () => {
         />
       </div>
       <div className="mx-20">
-        <h1 className="text-2xl pt-10 pb-3">Reviews:</h1>
+        <div className="flex justify-between items-center py-4">
+          <h1 className="text-2xl">Reviews:</h1>
+          <div>
+            <button
+              onClick={() => {
+                navigate(`/books/${bookId}/newReview`);
+              }}
+              className="border rounded-md bg-slate-300 p-2"
+            >
+              New Review
+            </button>
+          </div>
+        </div>
         <div>
           {chosenBook.reviews?.map((review) => {
             return (

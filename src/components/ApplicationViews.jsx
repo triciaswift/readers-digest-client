@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BookForm } from "./BookForm";
 import { BookList } from "./BookList";
 import { BookDetails } from "./BookDetails";
+import { ReviewForm } from "./ReviewForm";
 
 export const ApplicationViews = () => {
   const [booksState, setBooksState] = useState([]);
@@ -42,6 +43,7 @@ export const ApplicationViews = () => {
               element={<BookForm fetchBooks={fetchBooksFromAPI} />}
             />
             <Route path=":bookId" element={<BookDetails />} />
+            <Route path=":bookId/newReview" element={<ReviewForm />} />
           </Route>
         </Route>
       </Routes>
